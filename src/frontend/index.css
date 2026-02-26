@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* GlobalSend Dark Navy Theme - always dark */
+    --background: 0.12 0.025 255;
+    --foreground: 0.96 0.008 255;
+    --card: 0.16 0.03 255;
+    --card-foreground: 0.96 0.008 255;
+    --popover: 0.18 0.035 255;
+    --popover-foreground: 0.96 0.008 255;
+
+    /* Primary: vibrant blue */
+    --primary: 0.60 0.22 255;
+    --primary-foreground: 0.98 0.005 255;
+
+    /* Secondary: muted navy */
+    --secondary: 0.22 0.04 255;
+    --secondary-foreground: 0.85 0.01 255;
+
+    /* Muted */
+    --muted: 0.20 0.03 255;
+    --muted-foreground: 0.56 0.02 255;
+
+    /* Accent: emerald green */
+    --accent: 0.72 0.17 162;
+    --accent-foreground: 0.12 0.025 255;
+
+    /* Destructive */
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    /* Borders */
+    --border: 0.28 0.04 255;
+    --input: 0.22 0.04 255;
+    --ring: 0.60 0.22 255;
+
+    /* Custom tokens */
+    --success: 0.72 0.17 162;
+    --success-foreground: 0.12 0.025 255;
+    --warning: 0.78 0.16 68;
+    --warning-foreground: 0.12 0.025 255;
+
+    /* Charts */
+    --chart-1: 0.60 0.22 255;
+    --chart-2: 0.72 0.17 162;
+    --chart-3: 0.78 0.16 68;
+    --chart-4: 0.65 0.22 25;
+    --chart-5: 0.68 0.19 310;
+
+    /* Sidebar */
+    --sidebar: 0.14 0.028 255;
+    --sidebar-foreground: 0.96 0.008 255;
+    --sidebar-primary: 0.60 0.22 255;
+    --sidebar-primary-foreground: 0.98 0.005 255;
+    --sidebar-accent: 0.22 0.04 255;
+    --sidebar-accent-foreground: 0.85 0.01 255;
+    --sidebar-border: 0.26 0.04 255;
+    --sidebar-ring: 0.60 0.22 255;
+  }
+
+  .dark {
+    --background: 0.12 0.025 255;
+    --foreground: 0.96 0.008 255;
+    --card: 0.16 0.03 255;
+    --card-foreground: 0.96 0.008 255;
+    --popover: 0.18 0.035 255;
+    --popover-foreground: 0.96 0.008 255;
+    --primary: 0.60 0.22 255;
+    --primary-foreground: 0.98 0.005 255;
+    --secondary: 0.22 0.04 255;
+    --secondary-foreground: 0.85 0.01 255;
+    --muted: 0.20 0.03 255;
+    --muted-foreground: 0.56 0.02 255;
+    --accent: 0.72 0.17 162;
+    --accent-foreground: 0.12 0.025 255;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.04 255;
+    --input: 0.22 0.04 255;
+    --ring: 0.60 0.22 255;
+    --sidebar: 0.14 0.028 255;
+    --sidebar-foreground: 0.96 0.008 255;
+    --sidebar-primary: 0.60 0.22 255;
+    --sidebar-primary-foreground: 0.98 0.005 255;
+    --sidebar-accent: 0.22 0.04 255;
+    --sidebar-accent-foreground: 0.85 0.01 255;
+    --sidebar-border: 0.26 0.04 255;
+    --sidebar-ring: 0.60 0.22 255;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, oklch(0.20 0.05 255 / 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, oklch(0.18 0.04 200 / 0.3) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Number inputs for money */
+  .mono {
+    font-family: 'DM Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card border border-border backdrop-blur-sm;
+    box-shadow: 0 4px 24px oklch(0.05 0.03 255 / 0.6), inset 0 1px 0 oklch(1 0 0 / 0.05);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px oklch(0.60 0.22 255 / 0.3);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px oklch(0.72 0.17 162 / 0.3);
+  }
+
+  .btn-primary-glow {
+    box-shadow: 0 4px 20px oklch(0.60 0.22 255 / 0.4);
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary-glow:hover {
+    box-shadow: 0 6px 28px oklch(0.60 0.22 255 / 0.6);
+    transform: translateY(-1px);
+  }
+
+  .nav-item-active {
+    @apply bg-primary/20 text-primary;
+    position: relative;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(0.70 0.22 255), oklch(0.72 0.17 162));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .balance-display {
+    background: linear-gradient(135deg, oklch(0.60 0.22 255 / 0.15), oklch(0.72 0.17 162 / 0.1));
+    border: 1px solid oklch(0.60 0.22 255 / 0.3);
+  }
+
+  .step-active {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: 0 0 16px oklch(0.60 0.22 255 / 0.5);
+  }
+
+  .step-complete {
+    background: oklch(0.72 0.17 162);
+    color: oklch(0.12 0.025 255);
+  }
+
+  .step-inactive {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  /* Confetti animation keyframes */
+  @keyframes confetti-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 16px oklch(0.72 0.17 162 / 0.3); }
+    50% { box-shadow: 0 0 32px oklch(0.72 0.17 162 / 0.6); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.4s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .stagger-1 { animation-delay: 0.05s; opacity: 0; }
+  .stagger-2 { animation-delay: 0.10s; opacity: 0; }
+  .stagger-3 { animation-delay: 0.15s; opacity: 0; }
+  .stagger-4 { animation-delay: 0.20s; opacity: 0; }
+  .stagger-5 { animation-delay: 0.25s; opacity: 0; }
+}
